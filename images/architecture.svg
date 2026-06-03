@@ -1,230 +1,196 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1015" font-family="'Space Grotesk','Segoe UI',Arial,sans-serif" role="img" aria-label="Architecture du systeme multi-agents FinOps Boussole sur Amazon Bedrock AgentCore : Argus, Sibylle et Faucon, leurs outils Lambda via Gateway, et les sources AWS et hors-AWS.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 820" font-family="'Space Grotesk','Segoe UI',Arial,sans-serif" role="img" aria-label="Architecture multi-agents FinOps Boussole — Amazon Bedrock AgentCore">
   <defs>
-    <!-- ============ AWS-style service icons (colored square + white glyph) ============ -->
-    <symbol id="ic-users" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#5A6B87"/>
-      <circle cx="50" cy="31" r="9" fill="#fff" opacity="0.55"/>
-      <path d="M37 57c0-8 6-14 13-14s13 6 13 14z" fill="#fff" opacity="0.55"/>
-      <circle cx="32" cy="34" r="11" fill="#fff"/>
-      <path d="M16 61c0-10 7-17 16-17s16 7 16 17z" fill="#fff"/>
-    </symbol>
-
-    <symbol id="ic-identity" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#DD344C"/>
-      <path d="M40 14 L62 22 V41 C62 54 52 62 40 67 C28 62 18 54 18 41 V22 Z" fill="#fff"/>
-      <circle cx="40" cy="34" r="6" fill="#DD344C"/>
-      <path d="M29 52c0-7 5-11 11-11s11 4 11 11z" fill="#DD344C"/>
-    </symbol>
-
-    <symbol id="ic-policy" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#DD344C"/>
-      <path d="M40 14 L62 22 V41 C62 54 52 62 40 67 C28 62 18 54 18 41 V22 Z" fill="#fff"/>
-      <path d="M30 40 l7 8 14-16" stroke="#DD344C" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-
-    <symbol id="ic-memory" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#01A88D"/>
-      <rect x="24" y="24" width="32" height="32" rx="4" fill="#fff"/>
-      <rect x="32" y="32" width="16" height="16" rx="2" fill="#01A88D"/>
-      <g fill="#fff">
-        <rect x="30" y="16" width="4" height="8"/><rect x="38" y="16" width="4" height="8"/><rect x="46" y="16" width="4" height="8"/>
-        <rect x="30" y="56" width="4" height="8"/><rect x="38" y="56" width="4" height="8"/><rect x="46" y="56" width="4" height="8"/>
-        <rect x="16" y="30" width="8" height="4"/><rect x="16" y="38" width="8" height="4"/><rect x="16" y="46" width="8" height="4"/>
-        <rect x="56" y="30" width="8" height="4"/><rect x="56" y="38" width="8" height="4"/><rect x="56" y="46" width="8" height="4"/>
-      </g>
-    </symbol>
-
-    <symbol id="ic-argus" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#01A88D"/>
-      <ellipse cx="40" cy="40" rx="25" ry="15" fill="none" stroke="#fff" stroke-width="5"/>
-      <circle cx="40" cy="40" r="7.5" fill="#fff"/>
-    </symbol>
-
-    <symbol id="ic-sibylle" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#01A88D"/>
-      <path d="M20 58 H60 M20 58 V22" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <path d="M24 50 L34 42 L42 47 L57 29" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M49 29 H58 V38" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-
-    <symbol id="ic-faucon" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#01A88D"/>
-      <path d="M45 14 L24 45 H37 L33 66 L57 33 H42 Z" fill="#fff"/>
-    </symbol>
-
-    <symbol id="ic-observability" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#1F9E8F"/>
-      <rect x="15" y="21" width="50" height="33" rx="3" fill="none" stroke="#fff" stroke-width="4"/>
-      <path d="M22 40 H30 L34 31 L40 49 L45 38 H58" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <rect x="34" y="58" width="12" height="4" fill="#fff"/>
-    </symbol>
-
-    <symbol id="ic-gateway" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#8C4FFF"/>
-      <g stroke="#fff" stroke-width="3.4">
-        <line x1="40" y1="40" x2="40" y2="18"/><line x1="40" y1="40" x2="40" y2="62"/>
-        <line x1="40" y1="40" x2="18" y2="40"/><line x1="40" y1="40" x2="62" y2="40"/>
-      </g>
-      <circle cx="40" cy="40" r="8.5" fill="#fff"/>
-      <circle cx="40" cy="18" r="6" fill="#fff"/><circle cx="40" cy="62" r="6" fill="#fff"/>
-      <circle cx="18" cy="40" r="6" fill="#fff"/><circle cx="62" cy="40" r="6" fill="#fff"/>
-    </symbol>
-
-    <symbol id="ic-lambda" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#ED7100"/>
-      <path fill="#fff" d="M28.0075352,66 L15.5907274,66 L29.3235885,37.296 L35.5460249,50.106 L28.0075352,66 Z M30.2196674,34.553 C30.0512768,34.208 29.7004629,33.989 29.3175745,33.989 L29.3145676,33.989 C28.9286723,33.99 28.5778583,34.211 28.4124746,34.558 L13.097944,66.569 C12.9495999,66.879 12.9706487,67.243 13.1550766,67.534 C13.3374998,67.824 13.6582439,68 14.0020416,68 L28.6420072,68 C29.0299071,68 29.3817234,67.777 29.5481094,67.428 L37.563706,50.528 C37.693006,50.254 37.6920037,49.937 37.5586944,49.665 L30.2196674,34.553 Z M64.9953491,66 L52.6587274,66 L32.866809,24.57 C32.7014253,24.222 32.3486067,24 31.9617091,24 L23.8899822,24 L23.8990031,14 L39.7197081,14 L59.4204149,55.429 C59.5857986,55.777 59.9386172,56 60.3255148,56 L64.9953491,56 L64.9953491,66 Z M65.9976745,54 L60.9599868,54 L41.25928,12.571 C41.0938963,12.223 40.7410777,12 40.3531778,12 L22.89768,12 C22.3453987,12 21.8963569,12.447 21.8953545,12.999 L21.884329,24.999 C21.884329,25.265 21.9885708,25.519 22.1780103,25.707 C22.3654452,25.895 22.6200358,26 22.8866544,26 L31.3292417,26 L51.1221625,67.43 C51.2885485,67.778 51.6393624,68 52.02626,68 L65.9976745,68 C66.5519605,68 67,67.552 67,67 L67,55 C67,54.448 66.5519605,54 65.9976745,54 L65.9976745,54 Z"/>
-    </symbol>
-
-    <symbol id="ic-cloudwatch" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#E7157B"/>
-      <circle cx="40" cy="40" r="22" fill="none" stroke="#fff" stroke-width="4"/>
-      <path d="M27 42 H35 L39 31 L45 51 L49 41 H55" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-
-    <symbol id="ic-organizations" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#E7157B"/>
-      <rect x="32" y="16" width="16" height="13" rx="2" fill="#fff"/>
-      <rect x="17" y="51" width="16" height="13" rx="2" fill="#fff"/>
-      <rect x="47" y="51" width="16" height="13" rx="2" fill="#fff"/>
-      <path d="M40 29 V40 M25 51 V40 H55 V51" stroke="#fff" stroke-width="3" fill="none"/>
-    </symbol>
-
-    <symbol id="ic-trustedadvisor" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#E7157B"/>
-      <circle cx="40" cy="40" r="22" fill="none" stroke="#fff" stroke-width="4"/>
-      <path d="M30 40 l7 8 14-16" stroke="#fff" stroke-width="4.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-
-    <symbol id="ic-sns" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#8C4FFF"/>
-      <path fill="#fff" d="M17,38 C18.103,38 19,38.897 19,40 C19,41.103 18.103,42 17,42 C15.897,42 15,41.103 15,40 C15,38.897 15.897,38 17,38 L17,38 Z M41,64 C29.314,64 19.289,55.466 17.194,43.98 C18.965,43.894 20.427,42.659 20.857,41 L27,41 L27,39 L20.857,39 C20.427,37.342 18.966,36.107 17.195,36.02 C19.285,24.71 29.511,16 41,16 C45.313,16 49.832,17.622 54.429,20.821 L55.571,19.179 C50.633,15.743 45.73,14 41,14 C28.27,14 16.949,23.865 15.063,36.521 C13.839,37.207 13,38.5 13,40 C13,41.5 13.839,42.793 15.063,43.478 C16.97,56.341 28.056,66 41,66 C46.407,66 51.942,64.157 56.585,60.811 L55.415,59.189 C51.11,62.292 45.991,64 41,64 L41,64 Z M30.101,36.442 C31.955,36.895 34.275,37 36,37 C37.642,37 39.823,36.905 41.629,36.506 L37.105,45.553 C37.036,45.691 37,45.845 37,46 L37,50.453 C36.199,50.964 34.833,51.812 34,51.986 L34,46 C34,45.868 33.974,45.737 33.923,45.615 L30.101,36.442 Z M36,33 C40.025,33 42.174,33.604 42.841,34 C42.174,34.396 40.025,35 36,35 C31.975,35 29.826,34.396 29.159,34 C29.826,33.604 31.975,33 36,33 L36,33 Z M33,54 L34,54 C34.043,54 34.086,53.997 34.128,53.992 C35.352,53.833 36.909,52.887 38.272,52.013 L38.535,51.845 C38.824,51.661 39,51.342 39,51 L39,46.236 L44.559,35.12 C44.833,34.801 45,34.434 45,34 C45,31.39 39.361,31 36,31 C32.639,31 27,31.39 27,34 C27,34.366 27.12,34.684 27.32,34.967 L32,46.2 L32,53 C32,53.552 32.447,54 33,54 L33,54 Z M62,53 C63.103,53 64,53.897 64,55 C64,56.103 63.103,57 62,57 C60.897,57 60,56.103 60,55 C60,53.897 60.897,53 62,53 L62,53 Z M62,23 C63.103,23 64,23.897 64,25 C64,26.103 63.103,27 62,27 C60.897,27 60,26.103 60,25 C60,23.897 60.897,23 62,23 L62,23 Z M64,38 C65.103,38 66,38.897 66,40 C66,41.103 65.103,42 64,42 C62.897,42 62,41.103 62,40 C62,38.897 62.897,38 64,38 L64,38 Z M54,41 L60.143,41 C60.589,42.72 62.142,44 64,44 C66.206,44 68,42.206 68,40 C68,37.794 66.206,36 64,36 C62.142,36 60.589,37.28 60.143,39 L54,39 L54,26 L58.143,26 C58.589,27.72 60.142,29 62,29 C64.206,29 66,27.206 66,25 C66,22.794 64.206,21 62,21 C60.142,21 58.589,22.28 58.143,24 L53,24 C52.447,24 52,24.448 52,25 L52,39 L45,39 L45,41 L52,41 L52,55 C52,55.552 52.447,56 53,56 L58.143,56 C58.589,57.72 60.142,59 62,59 C64.206,59 66,57.206 66,55 C66,52.794 64.206,51 62,51 C60.142,51 58.589,52.28 58.143,54 L54,54 L54,41 Z"/>
-    </symbol>
-
-    <symbol id="ic-ec2" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#ED7100"/>
-      <rect x="26" y="26" width="28" height="28" rx="2" fill="#fff"/>
-      <rect x="33" y="33" width="14" height="14" fill="#ED7100"/>
-      <g fill="#fff">
-        <rect x="32" y="18" width="3" height="8"/><rect x="45" y="18" width="3" height="8"/>
-        <rect x="32" y="54" width="3" height="8"/><rect x="45" y="54" width="3" height="8"/>
-        <rect x="18" y="32" width="8" height="3"/><rect x="18" y="45" width="8" height="3"/>
-        <rect x="54" y="32" width="8" height="3"/><rect x="54" y="45" width="8" height="3"/>
-      </g>
-    </symbol>
-
-    <symbol id="ic-datacenter" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#1B9E4B"/>
-      <rect x="20" y="20" width="40" height="16" rx="2" fill="#fff"/>
-      <rect x="20" y="44" width="40" height="16" rx="2" fill="#fff"/>
-      <circle cx="27" cy="28" r="2.6" fill="#1B9E4B"/>
-      <circle cx="27" cy="52" r="2.6" fill="#1B9E4B"/>
-      <rect x="34" y="26.5" width="20" height="3" fill="#1B9E4B"/>
-      <rect x="34" y="50.5" width="20" height="3" fill="#1B9E4B"/>
-    </symbol>
-
-    <symbol id="ic-external" viewBox="0 0 80 80">
-      <rect width="80" height="80" fill="#1B9E4B"/>
-      <circle cx="40" cy="40" r="22" fill="none" stroke="#fff" stroke-width="4"/>
-      <ellipse cx="40" cy="40" rx="10" ry="22" fill="none" stroke="#fff" stroke-width="3"/>
-      <path d="M18 40 H62 M22.5 29 H57.5 M22.5 51 H57.5" stroke="#fff" stroke-width="3" fill="none"/>
-    </symbol>
-
-    <!-- ============ arrowheads ============ -->
-    <marker id="ah" viewBox="0 0 10 10" refX="8.4" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#37475A"/></marker>
-    <marker id="ahStart" viewBox="0 0 10 10" refX="1.6" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="#37475A"/></marker>
-    <marker id="ahLight" viewBox="0 0 10 10" refX="8.4" refY="5" markerWidth="6.6" markerHeight="6.6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8190a5"/></marker>
-    <marker id="ahTeal" viewBox="0 0 10 10" refX="8.4" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#01A88D"/></marker>
-    <marker id="ahTealStart" viewBox="0 0 10 10" refX="1.6" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="#01A88D"/></marker>
-    <marker id="ahPurple" viewBox="0 0 10 10" refX="8.4" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8C4FFF"/></marker>
-    <marker id="ahRed" viewBox="0 0 10 10" refX="8.4" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DD344C"/></marker>
-    <marker id="ahGreen" viewBox="0 0 10 10" refX="8.4" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B9E4B"/></marker>
-
-    <linearGradient id="busGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#9a63ff"/>
-      <stop offset="1" stop-color="#7b3df0"/>
-    </linearGradient>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#37475A"/></marker>
+    <marker id="ahTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#01A88D"/></marker>
+    <marker id="ahTealR" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="#01A88D"/></marker>
+    <marker id="ahRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DD344C"/></marker>
+    <marker id="ahPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8C4FFF"/></marker>
+    <marker id="ahGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B9E4B"/></marker>
   </defs>
 
-  <!-- ============ background ============ -->
-  <rect width="1400" height="1015" fill="#f7f9fc"/>
+  <!-- background -->
+  <rect width="1260" height="820" fill="#f8fafc"/>
 
-  <!-- ============ title ============ -->
-  <text x="40" y="40" fill="#232F3E" font-size="22" font-weight="700">Boussole FinOps — système multi-agents sur Amazon Bedrock AgentCore</text>
-  <rect x="40" y="50" width="372" height="3" rx="1.5" fill="#FF9900"/>
-  <text x="40" y="74" fill="#5A6B7B" font-size="13.5" font-weight="500">Boucle Voir → Anticiper → Agir · coût total de possession (TCO) : AWS multi-comptes + hors-AWS</text>
+  <!-- title -->
+  <text x="36" y="36" fill="#232F3E" font-size="20" font-weight="700">Boussole FinOps — Architecture multi-agents</text>
+  <rect x="36" y="46" width="310" height="3" rx="1.5" fill="#FF9900"/>
+  <text x="36" y="68" fill="#5A6B7B" font-size="12.5" font-weight="500">Amazon Bedrock AgentCore · Boucle Voir → Anticiper → Agir · TCO (AWS + hors-AWS)</text>
 
-  <!-- ============ CONTAINERS ============ -->
+  <!-- ============ CONTAINERS (back to front) ============ -->
   <!-- AWS Cloud -->
-  <rect x="170" y="100" width="1040" height="710" rx="16" fill="#eef3fb" stroke="#9bb4d4" stroke-width="2" stroke-dasharray="9 6"/>
-  <g transform="translate(188,116)">
-    <path d="M14 12 a8 8 0 0 1 15 -3 a7 7 0 0 1 9 7 a6 6 0 0 1 -1 12 H10 a7 7 0 0 1 -1 -14 a6 6 0 0 1 5 -2 z" fill="#9bb4d4" opacity="0.55"/>
-  </g>
-  <text x="222" y="135" fill="#48607f" font-size="14" font-weight="700">AWS Cloud · région eu-west-1</text>
+  <rect x="150" y="88" width="930" height="680" rx="14" fill="#eef4fb" stroke="#9bb4d4" stroke-width="1.8" stroke-dasharray="8 5"/>
+  <text x="174" y="112" fill="#48607f" font-size="12.5" font-weight="700">☁ AWS Cloud · eu-west-1</text>
 
   <!-- AgentCore -->
-  <rect x="205" y="150" width="520" height="620" rx="14" fill="#f4ecfb" stroke="#c9a3e6" stroke-width="2"/>
-  <text x="230" y="176" fill="#7028b0" font-size="15" font-weight="700">Amazon Bedrock AgentCore</text>
+  <rect x="170" y="126" width="460" height="622" rx="12" fill="#f6eefb" stroke="#c9a3e6" stroke-width="1.6"/>
+  <text x="192" y="150" fill="#7028b0" font-size="13" font-weight="700">Amazon Bedrock AgentCore</text>
 
-  <!-- Runtime -->
-  <rect x="232" y="330" width="300" height="410" rx="12" fill="#ffffff" stroke="#cfd8e3" stroke-width="1.6"/>
-  <text x="248" y="354" fill="#5A6B7B" font-size="12" font-weight="700">AgentCore Runtime · 3 agents</text>
+  <!-- Runtime sub-box -->
+  <rect x="190" y="310" width="250" height="320" rx="10" fill="#fff" stroke="#d8dfe8" stroke-width="1.4"/>
+  <text x="206" y="332" fill="#5A6B7B" font-size="11" font-weight="700">Runtime · 3 agents</text>
 
-  <!-- Tools -->
-  <rect x="765" y="150" width="190" height="620" rx="12" fill="#fff4ea" stroke="#f0c79a" stroke-width="1.8"/>
-  <text x="860" y="174" fill="#b35600" font-size="13" font-weight="700" text-anchor="middle">Outils · AWS Lambda</text>
+  <!-- Gateway + Policy column -->
+  <rect x="460" y="310" width="150" height="320" rx="10" fill="#faf5ff" stroke="#d8cbe8" stroke-width="1.2"/>
+  <text x="535" y="332" fill="#7028b0" font-size="11" font-weight="600" text-anchor="middle">Couche de contrôle</text>
 
-  <!-- Sources de données AWS (top) -->
-  <rect x="990" y="196" width="182" height="250" rx="12" fill="#fdeef4" stroke="#f0b6d0" stroke-width="1.8"/>
-  <text x="1081" y="218" fill="#a50d57" font-size="12" font-weight="700" text-anchor="middle">Sources de données AWS</text>
+  <!-- Tools column -->
+  <rect x="660" y="126" width="160" height="622" rx="10" fill="#fff7ef" stroke="#f0c79a" stroke-width="1.4"/>
+  <text x="740" y="150" fill="#b35600" font-size="12" font-weight="700" text-anchor="middle">Outils · Lambda</text>
 
-  <!-- Notification & cibles AWS (bottom) -->
-  <rect x="990" y="556" width="182" height="190" rx="12" fill="#fdeef4" stroke="#f0b6d0" stroke-width="1.8"/>
-  <text x="1081" y="578" fill="#a50d57" font-size="12" font-weight="700" text-anchor="middle">Notification &amp; cibles AWS</text>
+  <!-- AWS Sources column -->
+  <rect x="860" y="126" width="200" height="622" rx="10" fill="#fef0f5" stroke="#f0b6d0" stroke-width="1.4"/>
+  <text x="960" y="150" fill="#a50d57" font-size="12" font-weight="700" text-anchor="middle">Sources &amp; cibles</text>
 
-  <!-- Hors-AWS (outside the cloud) -->
-  <rect x="1232" y="440" width="158" height="170" rx="12" fill="#eaf7ee" stroke="#9bd3ad" stroke-width="1.8" stroke-dasharray="7 5"/>
-  <text x="1311" y="462" fill="#1B7E3C" font-size="13" font-weight="700" text-anchor="middle">Hors-AWS</text>
+  <!-- Hors-AWS box -->
+  <rect x="1098" y="320" width="148" height="200" rx="10" fill="#edf8f0" stroke="#9bd3ad" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="1172" y="344" fill="#1B7E3C" font-size="12" font-weight="700" text-anchor="middle">Hors-AWS</text>
 
+  <!-- ============ NODES ============ -->
+  <!-- USER -->
+  <rect x="30" y="340" width="100" height="80" rx="10" fill="#5A6B87" stroke="#36465A" stroke-width="1.4"/>
+  <text x="80" y="370" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Équipe FinOps</text>
+  <text x="80" y="386" font-size="10" fill="#cfd8e3" text-anchor="middle">Inès · Tom</text>
+  <text x="80" y="406" font-size="16" text-anchor="middle">🧑‍💼</text>
 
-  <!-- ============ ARROWS — main solid flow ============ -->
-  <g fill="none" stroke="#37475A" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-    <!-- 1 USER -> Identity -->
-    <path d="M130,244 C 188,238 214,236 268,236" marker-end="url(#ah)"/>
-    <!-- 2 Identity -> Runtime (Argus) -->
-    <path d="M300,266 C 300,338 322,396 350,400" marker-end="url(#ah)"/>
-    <!-- 3 Runtime -> Gateway -->
-    <path d="M534,452 L608,452" marker-end="url(#ah)"/>
-    <!-- 4 Gateway -> Tools (fan to the 5 tools) -->
-    <path d="M668,440 C 740,360 762,306 826,302" marker-end="url(#ahPurple)" stroke="#8C4FFF"/>
-    <path d="M672,450 L826,446" marker-end="url(#ahPurple)" stroke="#8C4FFF"/>
-    <path d="M668,462 C 740,508 762,522 826,524" marker-end="url(#ahPurple)" stroke="#8C4FFF"/>
-    <path d="M662,468 C 736,566 760,598 826,600" marker-end="url(#ahPurple)" stroke="#8C4FFF"/>
-    <path d="M658,470 C 742,632 760,666 826,668" marker-end="url(#ahPurple)" stroke="#8C4FFF"/>
-    <!-- 5 T_DATA -> AWS data sources -->
-    <path d="M888,300 L986,300" marker-end="url(#ah)"/>
-    <!-- T_NOTIF -> SNS -->
-    <path d="M888,600 C 930,604 950,608 986,610" marker-end="url(#ah)"/>
-    <!-- Remediation tool -> EC2/RDS -->
-    <path d="M888,668 C 930,672 950,676 986,678" marker-end="url(#ah)"/>
+  <!-- AgentCore : Identity -->
+  <rect x="200" y="170" width="100" height="50" rx="8" fill="#DD344C"/>
+  <text x="250" y="193" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Identity</text>
+  <text x="250" y="208" font-size="9.5" fill="#ffc9d2" text-anchor="middle">authentification</text>
+
+  <!-- AgentCore : Memory -->
+  <rect x="320" y="170" width="100" height="50" rx="8" fill="#01A88D"/>
+  <text x="370" y="193" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Memory</text>
+  <text x="370" y="208" font-size="9.5" fill="#b6ece2" text-anchor="middle">contexte session</text>
+
+  <!-- AgentCore : Observability -->
+  <rect x="200" y="240" width="220" height="44" rx="8" fill="#1F9E8F"/>
+  <text x="310" y="260" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Observability</text>
+  <text x="310" y="275" font-size="9.5" fill="#b6ece2" text-anchor="middle">traces → CloudWatch</text>
+
+  <!-- Argus -->
+  <rect x="206" y="350" width="220" height="70" rx="8" fill="#01A88D"/>
+  <text x="232" y="378" font-size="22">👁️</text>
+  <text x="268" y="378" font-size="13" font-weight="700" fill="#fff">Argus</text>
+  <text x="268" y="396" font-size="10" fill="#b6ece2">Analyste · lecture seule</text>
+  <rect x="350" y="356" width="66" height="18" rx="4" fill="#017866"/><text x="383" y="369" font-size="9.5" font-weight="600" fill="#fff" text-anchor="middle">VOIR</text>
+
+  <!-- Sibylle -->
+  <rect x="206" y="436" width="220" height="70" rx="8" fill="#01A88D"/>
+  <text x="232" y="464" font-size="22">🔮</text>
+  <text x="268" y="464" font-size="13" font-weight="700" fill="#fff">Sibylle</text>
+  <text x="268" y="482" font-size="10" fill="#b6ece2">Prévision + alerte proactive</text>
+  <rect x="350" y="442" width="66" height="18" rx="4" fill="#017866"/><text x="383" y="455" font-size="9.5" font-weight="600" fill="#fff" text-anchor="middle">ANTICIPER</text>
+
+  <!-- Faucon -->
+  <rect x="206" y="522" width="220" height="70" rx="8" fill="#01A88D"/>
+  <text x="232" y="550" font-size="22">🦅</text>
+  <text x="268" y="550" font-size="13" font-weight="700" fill="#fff">Faucon</text>
+  <text x="268" y="568" font-size="10" fill="#b6ece2">Optimiseur · action</text>
+  <rect x="350" y="528" width="66" height="18" rx="4" fill="#017866"/><text x="383" y="541" font-size="9.5" font-weight="600" fill="#fff" text-anchor="middle">AGIR</text>
+
+  <!-- Gateway -->
+  <rect x="470" y="360" width="130" height="56" rx="8" fill="#8C4FFF"/>
+  <text x="535" y="386" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">Gateway</text>
+  <text x="535" y="402" font-size="9.5" fill="#dcc8ff" text-anchor="middle">expose outils (MCP)</text>
+
+  <!-- Policy -->
+  <rect x="470" y="540" width="130" height="56" rx="8" fill="#DD344C"/>
+  <text x="535" y="566" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">Policy</text>
+  <text x="535" y="582" font-size="9.5" fill="#ffc9d2" text-anchor="middle">garde-fous · env=dev</text>
+
+  <!-- TOOLS -->
+  <g text-anchor="middle">
+    <rect x="680" y="170" width="120" height="50" rx="7" fill="#ED7100"/><text x="740" y="192" font-size="11" font-weight="700" fill="#fff">CloudWatch</text><text x="740" y="207" font-size="9" fill="#ffd9b3">métriques usage</text>
+    <rect x="680" y="240" width="120" height="50" rx="7" fill="#ED7100"/><text x="740" y="262" font-size="11" font-weight="700" fill="#fff">CUR / Orgs</text><text x="740" y="277" font-size="9" fill="#ffd9b3">coûts multi-comptes</text>
+    <rect x="680" y="310" width="120" height="50" rx="7" fill="#ED7100"/><text x="740" y="332" font-size="11" font-weight="700" fill="#fff">Trusted Advisor</text><text x="740" y="347" font-size="9" fill="#ffd9b3">checks gratuits</text>
+    <rect x="680" y="395" width="120" height="50" rx="7" fill="#ED7100"/><text x="740" y="417" font-size="11" font-weight="700" fill="#fff">Licences</text><text x="740" y="432" font-size="9" fill="#ffd9b3">API externe</text>
+    <rect x="680" y="465" width="120" height="50" rx="7" fill="#ED7100"/><text x="740" y="487" font-size="11" font-weight="700" fill="#fff">OnPrem</text><text x="740" y="502" font-size="9" fill="#ffd9b3">coûts datacenter</text>
+    <rect x="680" y="560" width="120" height="50" rx="7" fill="#ED7100"/><text x="740" y="582" font-size="11" font-weight="700" fill="#fff">Notification</text><text x="740" y="597" font-size="9" fill="#ffd9b3">→ SNS</text>
+    <rect x="680" y="650" width="120" height="50" rx="7" fill="#ED7100"/><text x="740" y="672" font-size="11" font-weight="700" fill="#fff">Remediation</text><text x="740" y="687" font-size="9" fill="#ffd9b3">stop EC2/RDS</text>
   </g>
 
-  <!-- 7 Faucon -> Policy (action sous garde-fous, red) ; 8 Policy -> Remediation -->
-  <g fill="none" stroke="#DD344C" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M414,624 C 500,616 560,632 608,632" marker-end="url(#ahRed)"/>
-    <path d="M668,636 C 730,656 772,666 826,668" marker-end="url(#ahRed)"/>
+  <!-- AWS SOURCES -->
+  <g text-anchor="middle">
+    <rect x="880" y="170" width="160" height="44" rx="7" fill="#E7157B"/><text x="960" y="196" font-size="11" font-weight="600" fill="#fff">Amazon CloudWatch</text>
+    <rect x="880" y="232" width="160" height="44" rx="7" fill="#E7157B"/><text x="960" y="252" font-size="11" font-weight="600" fill="#fff">Organizations / CUR</text><text x="960" y="266" font-size="9" fill="#ffc5da">Cost &amp; Usage Reports</text>
+    <rect x="880" y="294" width="160" height="44" rx="7" fill="#E7157B"/><text x="960" y="320" font-size="11" font-weight="600" fill="#fff">Trusted Advisor</text>
+    <rect x="880" y="560" width="160" height="44" rx="7" fill="#8C4FFF"/><text x="960" y="586" font-size="11" font-weight="600" fill="#fff">Amazon SNS</text>
+    <rect x="880" y="640" width="160" height="52" rx="7" fill="#ED7100"/><text x="960" y="664" font-size="11" font-weight="600" fill="#fff">EC2 / RDS</text><text x="960" y="680" font-size="9" fill="#ffd9b3">ressources env=dev</text>
   </g>
 
-  <!-- T_LIC / T_OP -> Hors-AWS (green dashed, crosses the cloud boundary) -->
-  <g fill="none" stroke="#1B9E4B" stroke-width="2.3" stroke-dasharray="7 5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M888,446 C 1040,440 1150,460 1228,468" marker-end="url(#ahGreen)"/>
-    <path d="M888,524 C 1040,528 1150,536 1228,540" marker-end="url(#ahGreen)"/>
+  <!-- HORS-AWS -->
+  <g text-anchor="middle">
+    <rect x="1112" y="366" width="120" height="46" rx="7" fill="#1B9E4B"/><text x="1172" y="392" font-size="11" font-weight="600" fill="#fff">API licences SaaS</text>
+    <rect x="1112" y="438" width="120" height="46" rx="7" fill="#1B9E4B"/><text x="1172" y="464" font-size="11" font-weight="600" fill="#fff">Datacenter on-prem</text>
   </g>
 
-  <!-- Memory <-> Argus (contexte de session, teal double) -->
-  <path d="M390,372 C 420,332 448,300 470,270" fill="none" stroke="#1F9E8F" stroke-width="2.1" marker-end="url(#ahTeal)" marker-start="url(#ahTealStart)"/>
+  <!-- ============ ARROWS ============ -->
+  <!-- 1. USER -> Identity -->
+  <path d="M130,370 L198,195" fill="none" stroke="#37475A" stroke-width="2.2" marker-end="url(#ah)"/>
+  <!-- 2. Identity -> Runtime -->
+  <path d="M250,220 L250,348" fill="none" stroke="#37475A" stroke-width="2.2" marker-end="url(#ah)"/>
+  <!-- Memory <-> Argus -->
+  <path d="M370,220 L370,348" fill="none" stroke="#01A88D" stroke-width="2" marker-end="url(#ahTeal)" marker-start="url(#ahTealR)"/>
+  <!-- 3. Agents -> Gateway -->
+  <path d="M426,388 L468,388" fill="none" stroke="#8C4FFF" stroke-width="2.2" marker-end="url(#ahPurple)"/>
+  <path d="M426,471 L460,471 L460,400 L468,400" fill="none" stroke="#8C4FFF" stroke-width="1.8" marker-end="url(#ahPurple)"/>
+  <!-- Sibylle -> Notification tool direct -->
+  <path d="M426,471 L460,471 L460,585 L678,585" fill="none" stroke="#01A88D" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ahTeal)"/>
+  <!-- 4. Gateway -> Tools -->
+  <path d="M600,375 L678,195" fill="none" stroke="#8C4FFF" stroke-width="1.8" marker-end="url(#ahPurple)"/>
+  <path d="M600,380 L678,265" fill="none" stroke="#8C4FFF" stroke-width="1.8" marker-end="url(#ahPurple)"/>
+  <path d="M600,385 L678,335" fill="none" stroke="#8C4FFF" stroke-width="1.8" marker-end="url(#ahPurple)"/>
+  <path d="M600,393 L678,420" fill="none" stroke="#8C4FFF" stroke-width="1.8" marker-end="url(#ahPurple)"/>
+  <path d="M600,400 L678,490" fill="none" stroke="#8C4FFF" stroke-width="1.8" marker-end="url(#ahPurple)"/>
+  <!-- 5. Tools -> Sources AWS -->
+  <path d="M800,195 L878,192" fill="none" stroke="#37475A" stroke-width="1.8" marker-end="url(#ah)"/>
+  <path d="M800,265 L878,254" fill="none" stroke="#37475A" stroke-width="1.8" marker-end="url(#ah)"/>
+  <path d="M800,335 L878,316" fill="none" stroke="#37475A" stroke-width="1.8" marker-end="url(#ah)"/>
+  <!-- Tools -> Hors-AWS -->
+  <path d="M800,420 L1110,389" fill="none" stroke="#1B9E4B" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#ahGreen)"/>
+  <path d="M800,490 L1110,461" fill="none" stroke="#1B9E4B" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#ahGreen)"/>
+  <!-- Notification -> SNS -->
+  <path d="M800,585 L878,582" fill="none" stroke="#37475A" stroke-width="1.8" marker-end="url(#ah)"/>
+  <!-- 6. Faucon -> Policy -->
+  <path d="M426,557 L468,563" fill="none" stroke="#DD344C" stroke-width="2.2" marker-end="url(#ahRed)"/>
+  <!-- 7. Policy -> Remediation -->
+  <path d="M600,568 L678,675" fill="none" stroke="#DD344C" stroke-width="2" marker-end="url(#ahRed)"/>
+  <!-- Remediation -> EC2/RDS -->
+  <path d="M800,675 L878,666" fill="none" stroke="#37475A" stroke-width="1.8" marker-end="url(#ah)"/>
+  <!-- SNS -> USER (return, dashed teal) -->
+  <path d="M960,604 L960,740 L80,740 L80,422" fill="none" stroke="#01A88D" stroke-width="2.2" stroke-dasharray="7 5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahTeal)"/>
 
-  <!-- Observability traces -> CloudWatch (teal dashed, routed across the top corridor) -->
-  <path d="M648,210 C 680,150 712,134 782,134 L1014,134 C 1078,134 1058,252 1040,282" fill="none" stroke="#1F9E8F" stroke-width="1.9" stroke-dasharray="6 5" marker-end="url(#ahTeal)"/>
+  <!-- ============ STEP BADGES ============ -->
+  <g font-size="11" font-weight="700" text-anchor="middle">
+    <circle cx="160" cy="280" r="11" fill="#fff" stroke="#37475A" stroke-width="1.8"/><text x="160" y="284" fill="#232F3E">1</text>
+    <circle cx="250" cy="290" r="11" fill="#fff" stroke="#37475A" stroke-width="1.8"/><text x="250" y="294" fill="#232F3E">2</text>
+    <circle cx="448" cy="388" r="11" fill="#fff" stroke="#8C4FFF" stroke-width="1.8"/><text x="448" y="392" fill="#7028b0">3</text>
+    <circle cx="638" cy="310" r="11" fill="#fff" stroke="#8C4FFF" stroke-width="1.8"/><text x="638" y="314" fill="#7028b0">4</text>
+    <circle cx="843" cy="254" r="11" fill="#fff" stroke="#37475A" stroke-width="1.8"/><text x="843" y="258" fill="#232F3E">5</text>
+    <circle cx="520" cy="740" r="11" fill="#fff" stroke="#01A88D" stroke-width="1.8"/><text x="520" y="744" fill="#017866">6</text>
+    <circle cx="448" cy="557" r="11" fill="#fff" stroke="#DD344C" stroke-width="1.8"/><text x="448" y="561" fill="#DD344C">7</text>
+  </g>
 
-  <!-- 6 SNS -> USER (alerte / validation humaine, teal dashed, routed along the bottom) -->
-  <path d="M1040,648 C 1014,728 964,762 888,762 L150,762 C 112,762 100,740 100,286" fill="none" stroke="#01A88D" stroke-width="2.3" stroke-dasharray="7 5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahTeal)"/>
+  <!-- ============ ARROW LABELS ============ -->
+  <g font-size="9.5" font-weight="600" fill="#5A6B7B">
+    <text x="135" y="265">question / commande</text>
+    <text x="256" y="290">authentifie</text>
+    <text x="376" y="296" fill="#01A88D">contexte</text>
+    <text x="435" y="376" fill="#8C4FFF">appel d'outil</text>
+    <text x="438" y="548" fill="#DD344C">action</text>
+    <text x="605" y="625" fill="#DD344C">si env=dev</text>
+    <text x="470" y="756" fill="#01A88D">alerte / validation humaine</text>
+  </g>
+
+  <!-- ============ LEGEND ============ -->
+  <g transform="translate(36,780)">
+    <text x="0" y="0" font-size="11" font-weight="700" fill="#232F3E">Légende :</text>
+    <rect x="70" y="-10" width="14" height="14" rx="3" fill="#01A88D"/><text x="90" y="2" font-size="10" fill="#5A6B7B">Agent / ML</text>
+    <rect x="160" y="-10" width="14" height="14" rx="3" fill="#ED7100"/><text x="180" y="2" font-size="10" fill="#5A6B7B">Compute / Lambda</text>
+    <rect x="290" y="-10" width="14" height="14" rx="3" fill="#DD344C"/><text x="310" y="2" font-size="10" fill="#5A6B7B">Sécurité / Policy</text>
+    <rect x="410" y="-10" width="14" height="14" rx="3" fill="#8C4FFF"/><text x="430" y="2" font-size="10" fill="#5A6B7B">App Integration / Gateway</text>
+    <rect x="580" y="-10" width="14" height="14" rx="3" fill="#E7157B"/><text x="600" y="2" font-size="10" fill="#5A6B7B">Management / Monitoring</text>
+    <rect x="750" y="-10" width="14" height="14" rx="3" fill="#1B9E4B"/><text x="770" y="2" font-size="10" fill="#5A6B7B">Hors-AWS</text>
+    <line x1="870" y1="-4" x2="910" y2="-4" stroke="#5A6B7B" stroke-width="1.8" stroke-dasharray="5 3"/><text x="918" y="2" font-size="10" fill="#5A6B7B">flux async / externe</text>
+  </g>
+</svg>
