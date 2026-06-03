@@ -1,0 +1,4 @@
+*~trainer*
+.vscode/
+__pycache__/
+*.pyc
